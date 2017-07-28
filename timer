@@ -1,0 +1,22 @@
+#!/usr/bin/env python 
+'''Replacement for the bash sleep that shows the countdown as it happens'''
+from __future__ import print_function
+import sys
+import time
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("duration", type=int)
+args = parser.parse_args()
+
+duration = args.duration
+
+for x in range(duration, 0, -1):
+     sys.stdout.write(str(x))
+     sys.stdout.flush()
+     time.sleep(1)
+     y = str(x+1)
+     x = '\b' * len(y) + ' ' * len(y) + '\r'
+     sys.stdout.write(x)
+     sys.stdout.flush()
+
